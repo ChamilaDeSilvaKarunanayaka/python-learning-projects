@@ -3,7 +3,7 @@
 This repository contains my step-by-step Python learning journey,
 from basic Python programs to AI and Machine Learning projects.
 
-## Week 1 – Python Basics
+## Python Basics
 - Number Guessing Game
 - Simple Calculator
 - Student Marks Manager
