@@ -2,11 +2,12 @@ import random
 
 secret_number = random.randint(1, 10)
 
-print(secret_number) # For testing purposes; remove or comment out in production
+guess = 0
 
-guess = int(input("Guess a number between 1 and 10: "))
+while guess != secret_number:
+ guess = int(input("Guess a number between 1 and 10: "))
 
-if guess == secret_number:
+ if guess == secret_number:
     print("🎉 Correct! You guessed the number.")
-else:
+ else:
     print("❌ Wrong guess. Try again!")
