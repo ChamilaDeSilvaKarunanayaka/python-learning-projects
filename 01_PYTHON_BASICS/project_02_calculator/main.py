@@ -6,3 +6,5 @@ print("3. Multiply")
 print("4. Divide")
 print("5. Exit")
 
+choice = int(input("Enter your choice (1-5):"))
+print("You selected:", choice)
