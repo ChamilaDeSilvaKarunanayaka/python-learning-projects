@@ -7,17 +7,33 @@ print("4. Divide")
 print("5. Exit")
 
 choice = int(input("Enter your choice (1-5):"))
-print("You selected:", choice)
+
+if choice >= 1 and choice <= 4:
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
 
 if choice == 1:
-    print("You chose Addition")
+    result = num1 + num2
+    print(f"Result:{result}")
+
 elif choice == 2:
-    print("You chose Subtraction")
+    result = num1 - num2
+    print(f"Result:{result}")
+
 elif choice == 3:
-    print("You chose Multiplication")
+    result = num1 * num2
+    print(f"Result:{result}")
+
 elif choice == 4:
-    print("You chose Division")
+    if num2 != 0:
+        result = num1 / num2
+        print(f"Result:{result}")
+    else:
+        print("Error: Division by zero is not allowed.")
+
 elif choice == 5:
     print("Exiting calculator...")
+
 else:
     print("Invalid choice")
+
