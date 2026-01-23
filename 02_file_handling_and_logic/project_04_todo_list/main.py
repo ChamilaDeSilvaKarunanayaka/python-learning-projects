@@ -1,3 +1,9 @@
+def add_task(tasks):
+    task = input("Enter a new task: ")
+    tasks.append(task)
+    print("Task added successfully!")
+
+
 tasks = []
 
 while True:
@@ -8,3 +14,6 @@ while True:
     print("3. Exit")
 
     choice = input("Enter your choice (1-3): ")
+
+    if choice == "1":
+        add_task(tasks)
