@@ -3,6 +3,13 @@ def add_task(tasks):
     tasks.append(task)
     print("Task added successfully!")
 
+def view_tasks(tasks):
+    if not tasks:
+        print("No tasks found.")
+    else:
+        print("Your Tasks:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task}")
 
 tasks = []
 
@@ -17,3 +24,13 @@ while True:
 
     if choice == "1":
         add_task(tasks)
+
+    elif choice == "2":
+        view_tasks(tasks)
+
+    elif choice == "3":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice. Try again.")    
