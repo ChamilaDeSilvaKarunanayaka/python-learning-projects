@@ -11,6 +11,11 @@ def view_tasks(tasks):
         for index, task in enumerate(tasks, start=1):
             print(f"{index}. {task}")
 
+def save_tasks(tasks):
+    with open("tasks.txt", "w") as file:
+        for task in tasks:
+            file.write(task + "\n")
+
 tasks = []
 
 while True:
@@ -24,6 +29,7 @@ while True:
 
     if choice == "1":
         add_task(tasks)
+        save_tasks(tasks)
 
     elif choice == "2":
         view_tasks(tasks)
