@@ -1,14 +1,14 @@
-class BankAccount:
-    def __init__(self, owner, balance=0):
-        self.owner = owner
-        self.balance = balance
+class BankAccount: # Define the BankAccount class
+    def __init__(self, owner, balance=0): # Initialize the BankAccount class with owner and balance
+        self.owner = owner # Set the owner of the account(object attribute)
+        self.balance = balance # Set the balance of the account(object attribute)
 
-    def deposit(self, amount):
-        self.balance += amount
+    def deposit(self, amount): # Define the deposit method to add money to the account(object method    )
+        self.balance += amount # Add the deposit amount to the current balance(object attribute)
         print(f"Deposited {amount}. New balance: {self.balance}")
 
-    def withdraw(self, amount):
-        if amount > self.balance:
+    def withdraw(self, amount): # Define the withdraw method to take money out of the account(object method)
+        if amount > self.balance: # Check if the withdrawal amount is greater than the current balance(object attribute)    
             print("Insufficient balance!")
         else:
             self.balance -= amount
@@ -16,11 +16,34 @@ class BankAccount:
 
     def check_balance(self):
         print(f"Current balance: {self.balance}")
+        
+        
+# Save accounts to file
+def save_accounts(accounts):
+    with open("accounts.txt", "w") as file:
+        for name, account in accounts.items():
+            file.write(f"{name},{account.balance}\n")
 
 
-accounts = {}
+# Load accounts from file
+def load_accounts():
+    accounts = {}
+    try:
+        with open("accounts.txt", "r") as file:
+            for line in file:
+                name, balance = line.strip().split(",")
+                accounts[name] = BankAccount(name, float(balance))
+    except FileNotFoundError:
+        pass
+    return accounts
 
-while True:
+
+# Load saved accounts
+accounts = load_accounts()
+
+
+# Bank system menu
+while True: # Start an infinite loop to display the bank menu and process user choices
     print("\nBank Menu")
     print("1. Create Account")
     print("2. Deposit")
@@ -37,6 +60,7 @@ while True:
         account = BankAccount(name, initial_balance)
         accounts[name] = account
 
+        save_accounts(accounts)
         print("Account created successfully!")
 
     elif choice == "2":
@@ -45,6 +69,7 @@ while True:
         if name in accounts:
             amount = float(input("Enter deposit amount: "))
             accounts[name].deposit(amount)
+            save_accounts(accounts)
         else:
             print("Account not found.")
 
@@ -54,6 +79,7 @@ while True:
         if name in accounts:
             amount = float(input("Enter withdrawal amount: "))
             accounts[name].withdraw(amount)
+            save_accounts(accounts)
         else:
             print("Account not found.")
 
